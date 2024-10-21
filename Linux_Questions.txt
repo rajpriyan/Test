@@ -1,0 +1,297 @@
+1. Q1: How do you find all `.log` files in the `/var/log` directory that were modified more than
+15 days ago, but exclude those files that are larger than 500MB?
+
+find /var/log -name "*.log" -mtime +15 -size -500M
+
+
+2. How can you search for all symbolic links in a directory and delete them using a single
+`find` command?
+
+find /path/to/directory -type l -exec rm {} +
+
+A symbolic link (or symlink) is a type of file in Linux and Unix-like operating systems that serves as a reference to another file or directory. 
+Unlike a regular file, a symbolic link points to a target file or directory by its path. Here are some key features:
+
+Pointer: A symlink acts as a pointer to another file or directory, allowing you to access it from a different location.
+Flexibility: You can create symlinks to files and directories located on different filesystems.
+Easy to Manage: If the original file is moved, the symlink can still point to it, but if the original file is deleted, the symlink becomes "broken" 
+(or dangling) and points to a non-existent location.
+Different from Hard Links: Unlike hard links, which point directly to the file's data on disk, symlinks have their own inode and can link to files or 
+directories even if they are on different filesystems.
+
+Example:
+To create a symbolic link, you can use the ln command with the -s option:
+
+bash: ln -s /path/to/original /path/to/symlink
+This creates a symlink at /path/to/symlink that points to the original file located at /path/to/original.
+
+3. Using find, how do you locate files in the /home/user directory that are owned by a
+user other than the current owner?
+
+find /home/user ! -user $(whoami)
+
+4. How can you find all files in the `/etc` directory that contain the word "config" in their
+name and have write permission for others?
+
+find /etc -type f -name "*config*" -perm -002
+
+Permissions Type: Read = 4; Write = 2; Execute = 1
+
+Group Permissions: 7 (Owner): rwx (read, write, execute) ; 5 (Group): r-x (read, execute) ;  5 (Others): r-x (read, execute).
+
+
+5. How can you search for all lines in a file /etc/passwd that do not contain the word
+"bash"?
+
+grep -v "bash" /etc/passwd
+
+-v: This option tells grep to invert the match, meaning it will return all lines that do not contain the specified pattern.
+"bash": This is the pattern you are searching for.
+
+6. How do you search recursively through all files in a directory for a specific string, showing
+only the matching filenames and excluding binary files?
+
+You can use the `grep` command with the `-r` (recursive) and `--exclude-binary` options to search through all files in a directory for a specific string, 
+showing only the matching filenames. Here’s how to do it:
+
+
+grep -rl --exclude-binary "your_string" /path/to/directory
+```
+
+-r: This option tells `grep` to search recursively through all files in the specified directory and its subdirectories.
+-l: This option makes `grep` print only the names of files with matching lines, rather than the matching lines themselves.
+--exclude-binary: This option ensures that binary files are excluded from the search.
+"your_string": Replace this with the specific string you are searching for.
+/path/to/directory: Replace this with the directory you want to search in.
+
+When you run this command, it will list the filenames of all files that contain the specified string, excluding binary files.
+
+7. How can you search for the word "error" in a file, displaying the surrounding 3 lines
+before and after each match?
+
+grep -C 3 "error" filename
+
+-C 3: This option tells grep to show 3 lines of context before and after each matching line.
+
+8. Using `grep`, how would you find all occurrences of the word "root" in `/etc/passwd` that
+start at the beginning of a line?
+
+grep "^root" /etc/passwd
+
+
+9. How can you create a compressed archive of the `/home/user` directory, excluding all
+`.mp4` files?
+
+tar --exclude='*.mp4' -czvf user_archive.tar.gz -C /home user
+
+tar: The command used to create and manipulate archive files.
+--exclude='*.mp4': This option tells tar to exclude all files ending with .mp4 from the archive.
+-czvf: These options mean:
+c: Create a new archive.
+z: Compress the archive using gzip.
+v: Verbose mode, showing progress in the terminal.
+f: Specifies the filename of the archive.
+user_archive.tar.gz: This is the name of the output archive file.
+-C /home user: This changes to the /home directory and includes the user directory in the archive.
+When you run this command, it will create a compressed archive of the /home/user directory, excluding all .mp4 files.
+
+
+10. How would you extract only a specific file `file.txt` from a `.tar.gz` archive without
+extracting the entire archive?
+
+tar -xzvf archive.tar.gz file.txt
+
+-x: Extract files from the archive.
+-z: Decompress the archive (used for .tar.gz files).
+-v: Verbose mode, showing progress in the terminal.
+-f archive.tar.gz: Specifies the name of the archive file from which to extract.
+file.txt: The specific file you want to extract from the archive.
+When you run this command, it will extract only file.txt from archive.tar.gz without extracting the entire archive.
+
+
+11. How can you append a file called `newfile.txt` to an existing `archive.tar.gz` without
+decompressing the archive?
+
+To append a file called `newfile.txt` to an existing `archive.tar.gz` without decompressing the archive, you can use the `tar` command 
+with the `--append` (`-r`) option. However, since `tar` cannot directly append to compressed archives, you first need to extract it, append the file, 
+and then compress it again. Here’s how you can do it:
+
+1. **Extract the existing archive:**
+
+   ```bash
+   mkdir temp_dir
+   tar -xzvf archive.tar.gz -C temp_dir
+   ```
+
+2. **Append the new file to the extracted contents:**
+
+   ```bash
+   cp newfile.txt temp_dir/
+   ```
+
+3. **Recreate the `.tar.gz` archive with the new file:**
+
+   ```bash
+   tar -czvf archive.tar.gz -C temp_dir .
+   ```
+
+4. **Clean up the temporary directory:**
+
+   ```bash
+   rm -r temp_dir
+   ```
+
+### Note:
+As a direct method, you can't append to a compressed `.tar.gz` file without decompressing it first.
+This is the typical approach to achieve the desired outcome. If you frequently need to append files, 
+consider keeping the archive in an uncompressed format (like `.tar`) until you're done appending.
+
+
+12. How would you list the contents of a `.tar.gz` archive without extracting it?
+
+tar -tzvf archive.tar.gz
+
+tar: The command used to manipulate archive files.
+-t: This option tells tar to list the contents of the archive.
+-z: This option tells tar to decompress the archive (used for .tar.gz files).
+-v: Verbose mode, which shows detailed information about each file in the archive.
+-f archive.tar.gz: Specifies the name of the archive file you want to list.
+When you run this command, it will display the contents of archive.tar.gz without extracting any files.
+
+13. How can you list all currently running processes and then filter for processes that
+include the word "java", showing only the process ID and name?
+
+You can use the `ps` command in combination with `grep` to list all currently running processes and filter for those that include the word "java." 
+To show only the process ID and name, you can format the output using `awk`. Here’s how to do it:
+
+ps aux | grep "java" | awk '{print $2, $11}'
+
+ps aux: Lists all currently running processes with detailed information.
+|: This pipe symbol sends the output of the `ps` command to the next command.
+grep "java": Filters the output to include only lines that contain the word "java."
+awk '{print $2, $11}': Processes the filtered output to print only the second field (Process ID) and the eleventh field (the command name).
+
+When you run this command, it will display the process IDs and names of all processes related to "java."
+
+14. How can you display a list of all files in /var/log, then filter for files containing the word
+"error" using both ls and grep in a pipeline?
+
+ls /var/log | grep "error"
+
+15. How do you count the number of lines in a file that contain the word "failed" using
+`grep` and `wc`?
+
+grep -c "failed" filename or grep "failed" filename | wc -l
+
+
+16. How can you display the last 20 lines of a log file and filter the lines that contain the
+word "critical" using a combination of `tail` and `grep`?
+
+tail -n 20 logfile | grep "critical"
+
+
+17. How do you display the disk usage of all files and directories in `/home/user` in humanreadable
+format, sorted by size in descending order?
+
+descending order: du -h /home/user | sort -hr
+
+ascending order: du -h /home/user | sort -h
+
+18. How can you display the total disk usage of the `/var` directory but exclude the
+subdirectory `/var/log`?
+
+du -sh /var --exclude=/var/log
+
+
+19. How can you use `du` to find the disk usage of files larger than 100MB in a directory?
+
+find /path/to/directory -type f -size +100M -exec du -h {} +
+
+
+20. How do you display the disk usage of the 10 largest directories in the `/usr` directory
+using `du`?
+
+du -h --max-depth=1 /usr | sort -hr | head -n 10
+
+
+
+
+Extra questions:
+
+1. Differnce between Free memory and available memory.
+
+
+Free Memory
+Definition: Free memory refers to the portion of RAM that is completely unallocated and not being used by any processes or the operating system.
+
+Used Memory
+Definition: Used memory is the total amount of RAM that is currently allocated to running processes, the operating system, and cached data.
+
+Available Memory
+Definition: Available memory represents the total amount of memory that can be allocated to processes without swapping. 
+It includes free memory plus memory that is cached but can be reclaimed quickly.
+
+2. How will you fetch the server details which are having an issue using a unix command.
+
+	1. Check CPU Usage: 	To check CPU usage, you can use the top or htop command:
+			    	bash: top -b -n 1 | head -n 10
+			    	This command runs top in batch mode, displaying the top 10 processes by CPU usage.
+
+	2. Check Memory Usage: 	You can check memory usage using the free command:
+				bash: free -h
+				This will display the memory usage in a human-readable format.
+
+	3. Check Disk Space:	To check the disk space usage, use the df command:
+				bash: df -h
+				This will show the disk space usage for all mounted filesystems in a human-readable format.
+
+	4. Check for Specific Errors in Log Files: If you want to check system logs for errors, you can use grep to search for keywords 
+						   such as "error" or "fail" in the log files.
+ 						   For example, to check /var/log/syslog:
+						   bash: grep -i 'error' /var/log/syslog
+
+	5. Check Running Services:	To see the status of services (for example, using systemctl):
+					bash: systemctl --failed
+					This command will list any failed services.
+
+
+3.  How will you resolve a priority issue when you dont have any idea on the issue
+
+
+	1. Gather Information: 
+		Identify Stakeholders: 	Talk to team members, project managers, or clients to understand who is affected  and what their perspectives are.
+	 	Review Documentation: Check any existing documentation, reports, or logs related to the issue to gather context.
+		Monitor Alerts and Reports: If your system has monitoring tools, review alerts or performance reports that might highlight the issue.
+
+	2. Assess Impact
+		Determine Severity: Identify how the issue affects users, systems, and business processes. 
+				    Is it a critical failure, a minor inconvenience, or something in between?
+		Consider Scope:     Evaluate how widespread the issue is. Is it affecting one user, a department, or the entire organization?
+
+	3. Prioritize Based on Impact
+		Urgency vs. Importance: Use a framework like the Eisenhower Matrix to categorize the issue based on urgency and importance.
+		High Urgency, High Importance: Address immediately.
+		High Urgency, Low Importance: Delegate or address quickly.
+		Low Urgency, High Importance: Plan for resolution.
+		Low Urgency, Low Importance: Monitor and address later.
+
+	4. Involve the Right People
+		Consult Experts: If the issue involves technical aspects, consult team members with relevant expertise. 
+				 They may provide insights into possible causes or solutions.
+		Create a Task Force: Form a small group to focus on the issue, ensuring a mix of skills and perspectives.
+
+5. Research and Analyze
+Look for Patterns: Investigate if similar issues have occurred in the past. If so, review how they were resolved.
+Explore Solutions: Research potential solutions based on the gathered information and expert opinions. This might involve testing or prototyping.
+
+6. Communicate Clearly
+Keep Stakeholders Informed: Regularly update affected parties on your findings and progress.
+Document Everything: Record your findings, decisions made, and actions taken for future reference.
+
+7. Implement and Monitor
+Implement a Solution: Once a resolution is decided, implement it carefully, considering any potential risks.
+Monitor Results: After implementation, monitor the system for any improvements or further issues.
+
+8. Review and Reflect
+Post-Mortem Analysis: Once the issue is resolved, conduct a review to understand what caused it and how the resolution process went.
+Update Procedures: Use the insights gained to improve documentation, processes, and training to prevent similar issues in the future.
