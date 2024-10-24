@@ -1,0 +1,52 @@
+1. About My Project:
+
+I have 5+ years experience in software development, testing, and application/production support. 
+I specialize in Java application support, database management, and client technical support.
+
+Recent Company Project Experience:
+
+Application Name: FUNDSINDIA
+
+In my most recent project, I worked on an existing application called FUNDSINDIA as a developer. 
+
+My main responsibilities included:
+
+  Technical Support: Provided guidance to stakeholders, ensuring smooth API integration and functionality.
+
+  Workflow Development: Designed and developed new workflows for API integration, enhancing the application’s efficiency.
+
+  Debugging and Optimization: Conducted thorough code debugging to resolve complex issues and ensure seamless performance.
+
+  Collaboration: Worked closely with cross functional teams to gather requirements and deliver scalable API solutions.
+
+  Agile Methodologies: Actively participated in agile practices like sprint planning and daily stand ups.
+
+
+Past Company Experience:
+
+In my previous position, I focused on code debugging, technical support, scheduling jobs and business analysis for project integration. 
+
+Key Contributions:
+
+Technical Support: Provided support for Leave Management Systems (LMS) and effectively managed client inquiries.
+
+Upgrades: Successfully upgraded applications from Java 1.8 to 11, Tomcat from 7 to 10, and MySQL from 5.5 to 8, significantly enhancing performance and security.
+
+Manual Testing: Contributed to manual testing of web applications, identifying and resolving bugs to improve product quality.
+
+Client Management: Managed client records and ensured satisfaction through prompt and responsive support.
+
+Monitoring: Monitored scheduled jobs and reports to ensure smooth operations.
+
+Business Requirements Gathering: Collaborated with teams to gather requirements and deliver solutions focused on customer needs.
+
+
+2. What is the most challenge which I faced is,
+
+ 	A) Query and Stored procedure optimization
+	B) Mysql upgradation
+	C) Apache Tomcat server upgradation
+	D) Exception handling like Null pointer
+	E) Duplicate records inserting in table
+
+
