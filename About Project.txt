@@ -9,7 +9,8 @@ Application Name: FUNDSINDIA
 
 In my most recent project, I worked as a developer on an existing application called FUNDSINDIA. 
 The FUNDSINDIA app is available on web, Android, and iOS platforms, and it relates to investments in mutual funds, equity, and SIP.
- My role involved creating new APIs, making changes to existing ones, and fixing bugs in the project.
+My role involved creating new APIs, making changes to existing ones, and fixing bugs in the project.
+I also wrote SQL queries to fetch, insert, and delete data from the database.
 
 My main responsibilities included:
 
