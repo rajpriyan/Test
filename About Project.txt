@@ -7,7 +7,7 @@ Recent Company Project Experience:
 
 Application Name: FUNDSINDIA
 
-In my most recent project, I worked on an existing application called FUNDSINDIA as a developer. 
+In my most recent project, I worked as a developer on an existing application called FUNDSINDIA. The FUNDSINDIA app is available on web, Android, and iOS platforms, and it relates to investments in mutual funds, equity, and SIP. My role involved creating new APIs, making changes to existing ones, and fixing bugs in the project.
 
 My main responsibilities included:
 
