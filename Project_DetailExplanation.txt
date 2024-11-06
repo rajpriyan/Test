@@ -29,8 +29,46 @@ Here are five use cases highlighting why users would benefit from using the  Fun
    -  Why Use FundsIndia : The app allows for real-time portfolio tracking, provides detailed reports on asset allocation, and sends alerts if any portfolio adjustment is needed. It makes it easy to review and update investments as the market evolves, helping users make informed decisions.
 
 
-Each of these use cases highlights how FundsIndia simplifies and streamlines the process of investing in stocks, mutual funds, and SIPs while providing valuable features like automated investing, goal tracking, tax optimization, and portfolio management.
 
+Each of these use cases highlights how FundsIndia simplifies and streamlines the process of investing in stocks, mutual funds, and SIPs while providing valuable features like automated investing, goal tracking, tax optimization, and portfolio management.
+   FundsIndia App - Acceptance Criteria 
+
+1.  Automated Mutual Fund Investments (SIP Management)   
+    Acceptance Criteria: 
+   - The user should be able to successfully set up a recurring SIP for a fixed amount and choose the mutual fund type (e.g., balanced fund).
+   - The system should deduct the specified SIP amount from the user’s linked bank account every month without fail.
+   - The user should receive email/SMS reminders a few days before the SIP deduction.
+   - The app should display the user’s SIP status (Active, Pending, or Cancelled) and provide performance tracking, including returns.
+   - The system should allow for automatic portfolio rebalancing based on market performance and the user’s risk profile.
+
+2.  Stock Investment & Equity Trading   
+    Acceptance Criteria: 
+   - The user should be able to search for and view live stock prices from reliable sources.
+   - The system should allow users to place buy and sell orders for stocks with low brokerage fees.
+   - Orders should be processed instantly and reflect in the user’s portfolio in real-time.
+   - The user should receive an order confirmation along with the status (successful, pending, or failed).
+   - Portfolio updates (stock prices, dividends, etc.) should be reflected immediately without page refresh.
+
+3.  Goal-Based Investing (Retirement Planning, Child Education, etc.)   
+    Acceptance Criteria: 
+   - The user should be able to define a financial goal (e.g., retirement, child education) and input the target amount, timeline, and current savings.
+   - The system should recommend appropriate investment products (e.g., SIPs, stocks, mutual funds) based on the user’s goal, risk appetite, and timeline.
+   - The user should be able to track progress toward the goal with updates on expected returns.
+   - The app should notify the user if they are behind schedule or if they need to increase their investment to meet the goal.
+
+4.  Tax Optimization and Investment Planning   
+    Acceptance Criteria: 
+   - The system should offer a list of eligible tax-saving investment options (e.g., ELSS, PPF) and allow the user to invest directly through SIP.
+   - The user should be able to calculate the potential tax savings from each option.
+   - The app should provide suggestions on how to allocate investments for maximum tax benefit.
+   - The system should show the impact of tax-saving investments on the user’s overall portfolio.
+
+5.  Real-Time Portfolio Monitoring & Rebalancing   
+    Acceptance Criteria: 
+   - The user should be able to see real-time data on their portfolio’s performance, including mutual fund NAVs and stock prices.
+   - The app should send notifications or alerts if the portfolio needs rebalancing due to significant market fluctuations.
+   - The user should be able to initiate portfolio rebalancing and adjust their investment strategy based on the recommendations.
+   - The system should display detailed reports, including asset allocation, performance over time, and returns.
 
 Technology which we used:
 
@@ -226,3 +264,77 @@ We are using Core Java, ZKOSS framework, and MySQL (v5.6 - 8.0) for your Leave M
 Frontend: The ZKOSS framework will handle the UI components. ZKOSS uses a server-driven model, allowing you to define UIs using XML or Java annotations and easily interact with backend logic through event-driven components.
 Backend: The backend will be written in Core Java, with servlets and Java Beans to handle business logic. You can use Spring or Java EE for more complex business logic, but this is optional.
 Database: MySQL (v5.6 - 8.0) will be used to store employee leave data, user credentials, leave balances, approval workflows, etc.
+
+
+Certainly! Below, I have added  acceptance criteria  for each of the use cases, tailored for both the  FundsIndia  app and the  Traktime Leave Management System (LMS) . Acceptance criteria outline the conditions that must be met for each use case to be considered complete and functional.
+
+
+Traktime Leave Management System - Acceptance Criteria 
+
+1.  Employee Requests Leave   
+    Acceptance Criteria: 
+   - The employee should be able to select the type of leave (e.g., vacation, sick leave) and specify the start and end date.
+   - The system should validate leave availability (e.g., sufficient leave balance) and allow the employee to submit the request only if the balance is sufficient.
+   - The employee should receive a confirmation of leave request submission.
+   - If the leave overlaps with another request or exceeds the employee’s balance, the system should notify the employee of the error.
+
+2.  Manager Approves/Rejects Leave Request   
+    Acceptance Criteria: 
+   - The manager should be able to review and approve or reject leave requests from employees.
+   - The system should send notifications to the employee upon approval or rejection, including the reasons for rejection if applicable.
+   - If the leave is approved, the system should update the employee’s leave balance and reflect it in the system.
+   - The manager should be able to view the employee’s leave history before making a decision.
+
+3.  HR Admin Views Leave Balances   
+    Acceptance Criteria: 
+   - The HR admin should be able to access leave balance reports for all employees in the organization.
+   - The system should allow the HR admin to view detailed information such as leave type, balance, and utilization.
+   - HR admin should be able to adjust or correct leave balances in case of errors.
+   - The system should show a historical record of all adjustments made by the HR admin.
+
+4.  Employee Views Leave History   
+    Acceptance Criteria: 
+   - The employee should be able to view a detailed history of their leave requests, including approved, pending, or rejected status.
+   - The system should display leave balances for each type of leave (e.g., sick, vacation, personal) and update the balances based on past requests.
+   - The employee should be able to filter or sort their leave history by date, leave type, or status.
+
+5.  System Sends Leave Reminders   
+    Acceptance Criteria: 
+   - The system should automatically send reminder notifications to the employee and their manager for upcoming leave within a defined timeframe (e.g., 3 days before leave).
+   - The system should also send reminders for unused leave days or expired leave balances.
+   - The notifications should include leave dates and any relevant information regarding the request status.
+
+6.  Employee Cancels Leave Request   
+    Acceptance Criteria: 
+   - The employee should be able to cancel an unapproved leave request.
+   - The system should allow cancellation of only pending requests and notify the manager of the cancellation.
+   - Once the leave request is cancelled, the system should update the leave status to "Cancelled" and notify the employee and the manager.
+
+7.  HR Admin Manages Leave Policies   
+    Acceptance Criteria: 
+   - The HR admin should be able to add, modify, or remove leave types.
+   - The HR admin should be able to adjust accrual rates and set maximum leave limits.
+   - The system should reflect changes in policies immediately and notify employees of any significant updates (e.g., new leave types or changes to accrual rates).
+
+8.  System Tracks Leave Utilization   
+    Acceptance Criteria: 
+   - The system should automatically calculate leave utilization across the organization.
+   - The HR admin should be able to generate reports showing the leave balance and utilization for all employees or by department.
+   - Reports should be filterable by date range, employee, and leave type.
+   - The system should track how many leave days have been used per employee, and show an overview for HR management.
+
+9.  Employee Applies for Sick Leave   
+    Acceptance Criteria: 
+   - The employee should be able to apply for sick leave, selecting the appropriate leave type and providing the required medical certificate (if applicable).
+   - The system should validate the sick leave request against the employee’s available sick leave balance.
+   - The request should be sent for manager approval, and both the employee and manager should be notified of the status.
+
+10.  Employee Requests Leave for a Public Holiday   
+    Acceptance Criteria: 
+   - The employee should be able to request leave on a public holiday based on the company’s holiday policy.
+   - The system should check if the holiday is approved and available in the company's policy.
+   - If the leave is valid, the system should approve it automatically; if not, it should notify the employee that the request cannot be processed.
+
+---
+
+These  acceptance criteria ensure that each feature works as intended and meets the user’s needs. They also help the development team focus on delivering the required functionalities in a well-defined manner, ensuring quality and usability of the system.
